@@ -4,41 +4,38 @@
 
 A notification Service internally used at Deep5 which wraps the OneSignal SDK.
 
-## Installation 💻
+## Installation and Configuration 💻
 
-**❗ In order to start using Deep5 Notifications you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
+**❗To use OneSignal as your messaging platform follow [OneSignal documentation](https://documentation.onesignal.com/docs/flutter-sdk-setup).**
 
 Install via `flutter pub add`:
 ```sh
 flutter pub add deep5_notifications
 ```
 
+If you are using Stacked:
+
+```sh
+ dependencies: [
+        # register the service as dependency
+       LazySingleton(classType: NotificationService),
+  ]
+```
+
+then execute the build runner:
+
+```sh
+stacked generate
+```
+
+and start injecting the service in your viewModel:
+
+```sh
+final _notificationService = locator<NotificationService>();
+```
 
 ---
 
-## Running Tests 🧪
-
-For first time users, install the [very_good_cli][very_good_cli_link]:
-
-```sh
-dart pub global activate very_good_cli
-```
-
-To run all unit tests:
-
-```sh
-very_good test --coverage
-```
-
-To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
-
-```sh
-# Generate Coverage Report
-genhtml coverage/lcov.info -o coverage/
-
-# Open Coverage Report
-open coverage/index.html
-```
 
 [flutter_install_link]: https://docs.flutter.dev/get-started/install
 [github_actions_link]: https://docs.github.com/en/actions/learn-github-actions
@@ -56,10 +53,3 @@ open coverage/index.html
 [very_good_ventures_link_dark]: https://verygood.ventures#gh-dark-mode-only
 [very_good_workflows_link]: https://github.com/VeryGoodOpenSource/very_good_workflows
 
-Alternatively you can just run:
-
-```sh
-# Generate Coverage Report
-sh tool/coverage.sh
-
-```
