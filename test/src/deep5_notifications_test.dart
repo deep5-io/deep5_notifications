@@ -1,10 +1,10 @@
 import 'package:deep5_notifications/deep5_notifications.dart';
 import 'package:flutter/services.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;
+
 void main() {
   final binding = TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -27,8 +27,8 @@ void main() {
           return null;
         },
       );
-      binding.defaultBinaryMessenger.setMockMethodCallHandler(const MethodChannel(permissionsChannelName),
-          (call) async {
+      binding.defaultBinaryMessenger.setMockMethodCallHandler(
+          const MethodChannel(permissionsChannelName), (call) async {
         calls.add(call);
         if (call.method == 'OneSignal#permission') {
           return true;
@@ -103,6 +103,11 @@ void main() {
       expect(locator<NotificationService>(), isNotNull);
     });
 
+    test('Permission returns valid value', () {
+      final notificationService = locator<NotificationService>();
+      expect(notificationService.permission, isNotNull);
+    });
+
     group('initialize()', () {
       test('''
           when called, should set log levels and
@@ -146,7 +151,8 @@ void main() {
     });
 
     group('login()', () {
-      test('when called, should login the user to OneSignal instance', () async {
+      test('when called, should login the user to OneSignal instance',
+          () async {
         final notificationService = locator<NotificationService>();
         calls = [];
 
