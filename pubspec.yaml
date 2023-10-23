@@ -1,0 +1,21 @@
+name: deep5_notifications
+description: A push notification service which uses OneSignal as push notification provider.
+version: 0.0.1+1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  get_it: ^7.6.4
+  mockito: ^5.4.2
+  onesignal_flutter: ^5.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  very_good_analysis: ^5.1.0
